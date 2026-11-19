@@ -38,6 +38,10 @@ public class Fraction {
 		 return numerator + "/" + denominator;
 	 }
 	 
+	 public double toDouble() {
+		 return numerator*1.0/denominator;
+	 }
+	 
 	 //mutator methods
 	 public void setNum(int n) {
 		 numerator = n;
@@ -50,5 +54,20 @@ public class Fraction {
 			 denominator = 1;
 			 System.out.println("Error: denominator cannot be zero.");
 		 } 
+	 }
+	 
+	 //static methods
+	 public static Fraction multiply(Fraction a, Fraction b) {
+		 int n = a.numerator * b.numerator;
+		 int d = a.denominator * b.denominator;
+		 Fraction answer = new Fraction(n, d);
+		 return answer;
+	 }
+	 
+	 public static Fraction divide(Fraction a, Fraction b) {
+		 int n = a.numerator * b.denominator;
+		 int d = a.denominator * b.numerator;
+		 Fraction answer = new Fraction(n, d);
+		 return answer;
 	 }
 }
