@@ -4,9 +4,12 @@ public class FractionDriver {
 		
 		Fraction f1 = new Fraction();
 		Fraction f2 = new Fraction(1,2);
-		Fraction f3 = new Fraction("1/3");
-		Fraction f4 = new Fraction(f3);
+		Fraction f3 = new Fraction(1,3);
+		Fraction f4 = new Fraction(36,48);
+		Fraction f5 = Fraction.subtract(f4, f3);
 		
-		System.out.println(Fraction.divide(f2, f3));
+		System.out.println(f5);
+		
+		
 	}
 }
