@@ -83,25 +83,13 @@ public class Fraction {
 		 return answer;
 	 }
 	 
-	 public static int GCF(int num, int denom) {
-		 int a = num; int b = denom;
-		 while (a!=b) {
-			 if (a>b) {
-				 a=a-b;
-			 } else {
-				 b=b-a;
-			 } 
-		 } return a;
-	 }
-	 
 	 public static Fraction add(Fraction a, Fraction b) {
 		 int numA = a.numerator * b.denominator;
 		 int numB = b.numerator * a.denominator;
 		 int num = numA + numB;
 		 int denom = a.denominator * b.denominator;
-		 int GCF = GCF(num, denom);
-		 Fraction answer = new Fraction(num/GCF, denom/GCF);
-		 return answer;
+		 Fraction answer = new Fraction(num, denom);
+		 return answer.reduce();
 	 }
 	 
 	 public static Fraction subtract(Fraction a, Fraction b) {
@@ -109,8 +97,7 @@ public class Fraction {
 		 int numB = b.numerator * a.denominator;
 		 int num = numA-numB;
 		 int denom = a.denominator * b.denominator;
-		 int GCF = GCF(num, denom);
-		 Fraction answer = new Fraction(num/GCF, denom/GCF);
-		 return answer; 
+		 Fraction answer = new Fraction(num, denom);
+		 return answer.reduce((); 
 	 }
 }
