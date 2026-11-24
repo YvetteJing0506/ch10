@@ -89,7 +89,8 @@ public class Fraction {
 		 int num = numA + numB;
 		 int denom = a.denominator * b.denominator;
 		 Fraction answer = new Fraction(num, denom);
-		 return answer.reduce();
+		 answer.reduce();
+		 return answer;
 	 }
 	 
 	 public static Fraction subtract(Fraction a, Fraction b) {
@@ -98,6 +99,7 @@ public class Fraction {
 		 int num = numA-numB;
 		 int denom = a.denominator * b.denominator;
 		 Fraction answer = new Fraction(num, denom);
-		 return answer.reduce((); 
+		 answer.reduce();
+		 return answer; 
 	 }
 }

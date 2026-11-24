@@ -10,6 +10,5 @@ public class FractionDriver {
 		
 		System.out.println(f5);
 		
-		
 	}
 }
