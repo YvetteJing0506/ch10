@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Fraction {
 	 
 	 //instance variables (attributes, fields) 
@@ -5,8 +7,9 @@ public class Fraction {
 	 
 	 //constructors
 	 public Fraction() { //default constructor
-		 numerator = 1;
-		 denominator = 1;
+		Random random = new Random();
+		numerator = random.nextInt(9)+1;
+		denominator = random.nextInt(9)+1;
 	 }
 	 
 	 public Fraction(int n, int d) {
@@ -44,7 +47,7 @@ public class Fraction {
 	 
 	 //mutator methods
 	 public void reduce() {
-		 int a = numerator; int b = denominator;
+		 int a = Math.abs(numerator); int b = Math.abs(denominator);
 		 while (a!=b) {
 			 if (a>b) {
 				 a=a-b;

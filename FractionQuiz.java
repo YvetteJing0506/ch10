@@ -10,8 +10,8 @@ public class FractionQuiz {
 		int correctTerms = 0; int totalTerms = 0; int i=0;
 		while (i<=100000) {
 			System.out.println();
-			Fraction f1 = randomFraction();
-			Fraction f2 = randomFraction();
+			Fraction f1 =  new Fraction();
+			Fraction f2 =  new Fraction();
 			String operator = randomOperator();
 			System.out.print(equation(f1, operator, f2));
 			String userAns = scanner.nextLine();
@@ -26,13 +26,6 @@ public class FractionQuiz {
 		} Fraction score = new Fraction(correctTerms, totalTerms);
 		  int percentile = (int)(correctTerms*100.0/totalTerms+0.5);
 		  System.out.println("Your score is: " + score + " (" + percentile + "%" + ")");
-	}
-	public static Fraction randomFraction() {
-		Random random = new Random();
-		int numerator = random.nextInt(9)+1;
-		int denominator = random.nextInt(9)+1;
-		Fraction f = new Fraction(numerator, denominator);
-		return f;
 	}
 	public static String randomOperator() {
 		String[] operators = {"+", "-", "*", "/"};
