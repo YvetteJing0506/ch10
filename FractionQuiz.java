@@ -24,7 +24,7 @@ public class FractionQuiz {
 			} totalTerms++; 
 			i++;
 		} Fraction score = new Fraction(correctTerms, totalTerms);
-		  int percentile = correctTerms*100/totalTerms;
+		  int percentile = (int)(correctTerms*100.0/totalTerms+0.5);
 		  System.out.println("Your score is: " + score + " (" + percentile + "%" + ")");
 	}
 	public static Fraction randomFraction() {
