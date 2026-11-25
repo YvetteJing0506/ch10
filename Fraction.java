@@ -73,6 +73,7 @@ public class Fraction {
 		 int n = a.numerator * b.numerator;
 		 int d = a.denominator * b.denominator;
 		 Fraction answer = new Fraction(n, d);
+		 answer.reduce();
 		 return answer;
 	 }
 	 
@@ -80,6 +81,7 @@ public class Fraction {
 		 int n = a.numerator * b.denominator;
 		 int d = a.denominator * b.numerator;
 		 Fraction answer = new Fraction(n, d);
+		 answer.reduce();
 		 return answer;
 	 }
 	 

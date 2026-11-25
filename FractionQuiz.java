@@ -5,41 +5,27 @@ public class FractionQuiz {
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Fraction Calculation Quiz. No Calculator Allowed!");
-		
-		Fraction f1 = randomFraction();
-		Fraction f2 = randomFraction();
-		String operator1 = randomOperator();
-		System.out.println(equation());
-		String userAns1 = scanner.nextString;
-		Fraction userAnswer1 = new Fraction(userAnswer1);
-		checkAnswer(f1, operator, f2, userAnswer1);
-		
-		Fraction f3 = randomFraction();
-		Fraction f4 = randomFraction();
-		String operator2 = randomOperator();
-		System.out.println(equation());
-		String userAns2 = scanner.nextString;
-		Fraction userAnswer2 = new Fraction(userAnswer2);
-		checkAnswer(f3, operator, f4, userAnswer2);
-		
-		Fraction f5 = randomFraction();
-		Fraction f6 = randomFraction();
-		String operator3 = randomOperator();
-		System.out.println(equation());
-		String userAns3 = scanner.nextString;
-		Fraction userAnswer3 = new Fraction(userAnswer3);
-		checkAnswer(f5, operator, f6, userAnswer3);
-		
-		Fraction f7 = randomFraction();
-		Fraction f8 = randomFraction();
-		String operator4 = randomOperator();
-		System.out.println(equation());
-		String userAns4 = scanner.nextString;
-		Fraction userAnswer4 = new Fraction(userAnswer4);
-		checkAnswer(f7, operator, f8, userAnswer);
-		
-		System.out.println("Your score is: " + score + ".");
+		System.out.println();
+		System.out.println("Fraction Calculation Quiz. Answers should be reduced to lowest term. No Calculator Allowed!");
+		int correctTerms = 0; int totalTerms = 0; int i=0;
+		while (i<=100000) {
+			System.out.println();
+			Fraction f1 = randomFraction();
+			Fraction f2 = randomFraction();
+			String operator = randomOperator();
+			System.out.print(equation(f1, operator, f2));
+			String userAns = scanner.nextLine();
+			if (userAns.equals("quit")) {
+				totalTerms=i;
+				break; 
+			} System.out.println(checkAnswer(f1, operator, f2, userAns));
+			if (checkAnswer(f1, operator, f2, userAns).equals("Correct")) {
+				correctTerms++; totalTerms++;
+			} totalTerms++; 
+			i++;
+		} Fraction score = new Fraction(correctTerms, totalTerms);
+		  int percentile = correctTerms*100/totalTerms;
+		  System.out.println("Your score is: " + score + " (" + percentile + "%" + ")");
 	}
 	public static Fraction randomFraction() {
 		Random random = new Random();
@@ -49,21 +35,31 @@ public class FractionQuiz {
 		return f;
 	}
 	public static String randomOperator() {
-		String[] operators = {"+, -, *, /"};
+		String[] operators = {"+", "-", "*", "/"};
 		Random random = new Random();
 		int num = random.nextInt(4);
 		return operators[num];
 	}
-	public static void equation(Fraction f1, String operator, Fraction f2) {
-		System.out.println(f1 + " " + operator + " " + f2 + " = ");
+	public static String equation(Fraction a, String operator, Fraction b) {
+		return a + " " + operator + " " + b + " = ";
 	}
-	public static boolean checkAnswer(Fraction a, String operator, 
-									  Fraction b, Fraction userAnswer) {
+	public static String checkAnswer(Fraction a, String operator, 
+									  Fraction b, String userAns) {
+		Fraction userAnswer = new Fraction(userAns);
 		Fraction answer = new Fraction();
 		if (operator.equals("+")) {
 			answer = Fraction.add(a, b);
 		} if (operator.equals("-")) {
 			answer = Fraction.subtract(a, b);
-		}
+		} if (operator.equals("*")) {
+			answer = Fraction.multiply(a, b);
+		} if (operator.equals("/")) {
+			answer = Fraction.divide(a, b);
+		} int n = userAnswer.getNum(); int d = userAnswer.getDenom();
+		  int N = answer.getNum(); int D = answer.getDenom();
+		if (n==N && d==D) {
+			return "Correct";
+		} return "Wrong. The answer is " + answer;
 	}
+	
 } 
